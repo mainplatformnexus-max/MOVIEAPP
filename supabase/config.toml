@@ -1,0 +1,4 @@
+project_id = "ruopqthulidyyeilpcli"
+
+[functions.video-proxy]
+verify_jwt = false

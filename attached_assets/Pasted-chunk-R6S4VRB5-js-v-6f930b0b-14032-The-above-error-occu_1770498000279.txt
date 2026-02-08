@@ -1,0 +1,34 @@
+chunk-R6S4VRB5.js?v=6f930b0b:14032 The above error occurred in the <AdminSubscriptions> component:
+
+    at AdminSubscriptions (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/src/pages/admin/AdminSubscriptions.tsx:38:64)
+    at RenderedRoute (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=6f930b0b:4088:5)
+    at Outlet (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=6f930b0b:4494:26)
+    at main
+    at div
+    at div
+    at AdminLayout (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/src/pages/admin/AdminLayout.tsx:61:48)
+    at RenderedRoute (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=6f930b0b:4088:5)
+    at Routes (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=6f930b0b:4558:5)
+    at MovieProvider (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/src/contexts/MovieContext.tsx:65:33)
+    at AuthProvider (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/src/contexts/AuthContext.tsx:38:32)
+    at Router (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=6f930b0b:4501:15)
+    at BrowserRouter (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=6f930b0b:5247:5)
+    at Provider (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/chunk-6756QMN4.js?v=6f930b0b:72:15)
+    at TooltipProvider (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=6f930b0b:2271:5)
+    at QueryClientProvider (https://d574a004-ca93-4ae9-88d8-4999ca2c4cb8-00-1nl0vrn23y4oj.riker.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=6f930b0b:2934:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+chunk-R6S4VRB5.js?v=6f930b0b:9129 Uncaught TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at AdminSubscriptions.tsx:60:33
+    at Array.map (<anonymous>)
+    at AdminSubscriptions (AdminSubscriptions.tsx:53:33)
+﻿
+
+Press ctrl i to turn on code suggestions. Press ctrl x to disable code suggestions.
+ctrl
+i
+ to turn on code suggestions. Don't show again NEW
+
