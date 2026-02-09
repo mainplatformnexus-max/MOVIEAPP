@@ -5,6 +5,8 @@ import { useMovies } from "@/contexts/MovieContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Artplayer from "artplayer";
 import { getPlayableVideoUrl } from "@/lib/videoProxy";
+import Hls from "hls.js";
+import dashjs from "dashjs";
 
 const TVChannels = () => {
   const isMobile = useIsMobile();
@@ -49,6 +51,21 @@ const TVChannels = () => {
       lock: true,
       moreVideoAttr: {
         crossOrigin: "anonymous",
+      },
+      customType: {
+        m3u8: function (video, url) {
+          if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(url);
+            hls.attachMedia(video);
+          } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+            video.src = url;
+          }
+        },
+        mpd: function (video, url) {
+          const player = dashjs.MediaPlayer().create();
+          player.initialize(video, url, true);
+        },
       },
     });
 

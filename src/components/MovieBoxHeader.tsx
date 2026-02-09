@@ -33,8 +33,8 @@ const MovieBoxHeader = ({ onToggleSidebar }: MovieBoxHeaderProps) => {
           <Menu className="w-5 h-5 text-foreground" />
         </button>
         <a href="/" className="flex items-center gap-2">
-          <img src="https://i.postimg.cc/T2khf7dN/purple-pink-color-triangle-logo-1273375-228-removebg-preview.png" alt="Luo Film Logo" className="w-8 h-8 object-contain" />
-          <h1 className="text-foreground font-bold text-lg hidden sm:block">
+          <img src="https://i.postimg.cc/T2khf7dN/purple-pink-color-triangle-logo-1273375-228-removebg-preview.png" alt="Luo Film Logo" className="w-10 h-10 object-contain" />
+          <h1 className="text-foreground font-bold text-xl hidden sm:block">
             <span className="gradient-primary-text">Luo</span> Film
           </h1>
         </a>
