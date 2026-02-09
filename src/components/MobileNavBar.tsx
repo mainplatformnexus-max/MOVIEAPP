@@ -7,7 +7,7 @@ const navItems = [
   { label: "TV", icon: Tv, href: "/tv-shows" },
   { label: "Movies", icon: Film, href: "/movies" },
   { label: "Live TV", icon: Tv, href: "/tv-channels" },
-  { label: "Search", icon: Search, href: "/search" },
+  { label: "Agent", icon: Crown, href: "/agent" },
 ];
 
 export function MobileNavBar() {

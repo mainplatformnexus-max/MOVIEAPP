@@ -119,11 +119,15 @@ const SubscriptionModal = ({ isOpen, onClose }: SubscriptionModalProps) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-card rounded-2xl border border-border w-full max-w-2xl max-h-[90vh] overflow-hidden shadow-xl flex flex-col">
+      <div className="relative bg-card rounded-2xl border border-border w-full max-w-3xl max-h-[90vh] overflow-hidden shadow-xl flex flex-col">
         {/* Header */}
         <div className="p-4 border-b border-border flex items-center justify-between bg-card sticky top-0 z-10">
-          <div className="flex items-center gap-2">
-            <Zap className="w-5 h-5 text-primary" />
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://i.postimg.cc/T2khf7dN/purple-pink-color-triangle-logo-1273375-228-removebg-preview.png" 
+              alt="Luo Film Logo" 
+              className="w-8 h-8 object-contain"
+            />
             <h2 className="text-xl font-bold text-foreground">
               {step === "plans" ? "Choose Your Plan" : "Mobile Money Payment"}
             </h2>
@@ -136,9 +140,14 @@ const SubscriptionModal = ({ isOpen, onClose }: SubscriptionModalProps) => {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-4 md:p-8">
           {step === "plans" ? (
             <>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold mb-2">Get Unlimited Access</h3>
+                <p className="text-muted-foreground">Select the best plan for your entertainment</p>
+              </div>
+
               {/* Tabs */}
               <div className="flex p-1 bg-secondary rounded-xl mb-8 w-fit mx-auto">
                 <button
@@ -165,14 +174,14 @@ const SubscriptionModal = ({ isOpen, onClose }: SubscriptionModalProps) => {
               </div>
 
               {/* Plans Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-4">
                 {plans.map((plan) => (
                   <div
                     key={plan.id}
-                    className={`relative p-6 rounded-2xl border transition-all ${
+                    className={`relative p-5 md:p-6 rounded-2xl border transition-all flex flex-col ${
                       plan.plan === "agent"
                         ? "border-amber-400/30 bg-amber-400/5 hover:border-amber-400/50"
-                        : "border-border hover:border-primary/50"
+                        : "border-border hover:border-primary/50 bg-secondary/20"
                     }`}
                   >
                     {plan.plan === "agent" && (
@@ -197,12 +206,14 @@ const SubscriptionModal = ({ isOpen, onClose }: SubscriptionModalProps) => {
                         </li>
                       ))}
                     </ul>
-                    <button
-                      onClick={() => handleStartPayment(plan)}
-                      className="w-full py-2.5 rounded-xl gradient-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity"
-                    >
-                      Subscribe
-                    </button>
+                    <div className="mt-auto">
+                      <button
+                        onClick={() => handleStartPayment(plan)}
+                        className="w-full py-2.5 rounded-xl gradient-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+                      >
+                        Subscribe
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>

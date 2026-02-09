@@ -70,11 +70,15 @@ const LoginModal = ({ isOpen, onClose, onSuccess }: LoginModalProps) => {
         </button>
 
         <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center">
-              <Film className="w-4 h-4 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold gradient-primary-text">Luo Film</span>
+          <div className="flex flex-col items-center gap-3 mb-4">
+            <img 
+              src="https://i.postimg.cc/T2khf7dN/purple-pink-color-triangle-logo-1273375-228-removebg-preview.png" 
+              alt="Luo Film Logo" 
+              className="w-16 h-16 object-contain"
+            />
+            <h1 className="text-2xl font-bold">
+              <span className="gradient-primary-text">Luo</span> Film
+            </h1>
           </div>
           <p className="text-muted-foreground text-sm">
             {isRegister ? "Create your account" : "Sign in to continue"}
