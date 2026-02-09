@@ -13,16 +13,16 @@ const AgentPage = () => {
   const isMobile = useIsMobile();
   const { movies } = useMovies();
   const { hasAgentAccess, isAuthenticated } = useAuth();
+  
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     if (isMobile) {
       setSidebarOpen(false);
     }
   }, [isMobile]);
-
-  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
 
   // Agent movies: latest uploaded + agent-exclusive content
   const agentMovies = movies
@@ -33,16 +33,6 @@ const AgentPage = () => {
   const latestUploaded = movies
     .sort((a, b) => new Date(b.uploadedAt || "").getTime() - new Date(a.uploadedAt || "").getTime())
     .slice(0, 20);
-
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-
-  useEffect(() => {
-    if (isMobile) {
-      setSidebarOpen(false);
-    }
-  }, [isMobile]);
 
   return (
     <div className="min-h-screen bg-background">
