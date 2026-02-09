@@ -55,9 +55,28 @@ const TVChannels = () => {
       customType: {
         m3u8: function (video, url) {
           if (Hls.isSupported()) {
-            const hls = new Hls();
+            const hls = new Hls({
+              enableWorker: true,
+              lowLatencyMode: true,
+              backBufferLength: 90
+            });
             hls.loadSource(url);
             hls.attachMedia(video);
+            hls.on(Hls.Events.ERROR, (event, data) => {
+              if (data.fatal) {
+                switch (data.type) {
+                  case Hls.ErrorTypes.NETWORK_ERROR:
+                    hls.startLoad();
+                    break;
+                  case Hls.ErrorTypes.MEDIA_ERROR:
+                    hls.recoverMediaError();
+                    break;
+                  default:
+                    hls.destroy();
+                    break;
+                }
+              }
+            });
           } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
             video.src = url;
           }
@@ -65,6 +84,15 @@ const TVChannels = () => {
         mpd: function (video, url) {
           const player = dashjs.MediaPlayer().create();
           player.initialize(video, url, true);
+          player.updateSettings({
+            streaming: {
+              lowLatencyEnabled: true,
+              abr: {
+                initialBitrate: { audio: -1, video: -1 },
+                autoSwitchBitrate: { audio: true, video: true },
+              }
+            }
+          });
         },
       },
     });
