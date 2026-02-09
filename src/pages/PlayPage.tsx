@@ -159,7 +159,7 @@ const PlayPage = () => {
             <Skeleton className="h-[50vh] w-full rounded-xl lg:w-[35%]" />
           </div>
           <Skeleton className="h-6 w-48 mb-4" />
-          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 md:gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 md:gap-3">
             {Array.from({ length: 8 }).map((_, i) => (
               <Skeleton key={i} className="aspect-[2/3] rounded-lg" />
             ))}
@@ -269,7 +269,7 @@ const PlayPage = () => {
         {relatedContent.length > 0 && (
           <div className="mt-8">
             <h3 className="text-xl font-bold text-foreground mb-6">You May Also Like</h3>
-            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 md:gap-3">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 md:gap-3">
               {relatedContent.map((item) => (
                 <MovieCard key={item.id} movie={item} />
               ))}

@@ -11,20 +11,32 @@ export default function PlayerActions({ title, url }: PlayerActionsProps) {
   const handleDownload = async (e: React.MouseEvent) => {
     if (!url) return;
     e.preventDefault();
+    
     try {
+      // Use the proxy if it's an external URL to avoid CORS issues
+      const proxyUrl = url.includes('echowave.io') || url.includes('google') ? `/api/proxy?url=${encodeURIComponent(url)}` : url;
+      
       const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
       const blob = await response.blob();
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = `${title}.mp4`;
+      link.download = `${title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.mp4`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      window.URL.revokeObjectURL(downloadUrl);
+      setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 100);
     } catch (err) {
-      // Fallback to direct link if fetch fails
-      window.open(url, '_blank');
+      console.error('Download failed:', err);
+      // Fallback: try direct download attribute which works for same-origin or CORS-friendly headers
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${title}.mp4`;
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   };
 
