@@ -8,12 +8,12 @@ const AdminHero = () => {
   const { heroSlides, addHeroSlide, updateHeroSlide, deleteHeroSlide } = useMovies();
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [form, setForm] = useState({ title: "", description: "", genre: "", year: 2026, rating: 8.5 });
+  const [form, setForm] = useState({ title: "", description: "", genre: "", year: 2026, rating: 8.5, image: "" });
 
-  const resetForm = () => { setForm({ title: "", description: "", genre: "", year: 2026, rating: 8.5 }); setEditingId(null); setShowForm(false); };
+  const resetForm = () => { setForm({ title: "", description: "", genre: "", year: 2026, rating: 8.5, image: "" }); setEditingId(null); setShowForm(false); };
 
   const handleEdit = (s: HeroSlide) => {
-    setForm({ title: s.title, description: s.description, genre: s.genre, year: s.year, rating: s.rating });
+    setForm({ title: s.title, description: s.description, genre: s.genre, year: s.year, rating: s.rating, image: typeof s.image === 'string' ? s.image : "" });
     setEditingId(s.id); setShowForm(true);
   };
 
@@ -22,7 +22,7 @@ const AdminHero = () => {
     if (editingId) {
       updateHeroSlide(editingId, form);
     } else {
-      addHeroSlide({ id: `hero-${Date.now()}`, ...form, image: heroBanner1 });
+      addHeroSlide({ id: `hero-${Date.now()}`, ...form, image: form.image || heroBanner1 });
     }
     resetForm();
   };
@@ -43,6 +43,7 @@ const AdminHero = () => {
             <input className="h-10 px-3 rounded-lg bg-secondary border border-border text-foreground text-sm" placeholder="Genre" value={form.genre} onChange={(e) => setForm({ ...form, genre: e.target.value })} required />
             <input type="number" className="h-10 px-3 rounded-lg bg-secondary border border-border text-foreground text-sm" placeholder="Year" value={form.year} onChange={(e) => setForm({ ...form, year: Number(e.target.value) })} />
             <input type="number" step="0.1" className="h-10 px-3 rounded-lg bg-secondary border border-border text-foreground text-sm" placeholder="Rating" value={form.rating} onChange={(e) => setForm({ ...form, rating: Number(e.target.value) })} />
+            <input className="h-10 px-3 rounded-lg bg-secondary border border-border text-foreground text-sm md:col-span-2" placeholder="Image URL (optional)" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
             <textarea className="px-3 py-2 rounded-lg bg-secondary border border-border text-foreground text-sm md:col-span-2" placeholder="Description" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
             <div className="flex gap-2 md:col-span-2">
               <button type="submit" className="px-6 py-2 rounded-lg gradient-primary text-primary-foreground text-sm font-medium">{editingId ? "Update" : "Add"}</button>

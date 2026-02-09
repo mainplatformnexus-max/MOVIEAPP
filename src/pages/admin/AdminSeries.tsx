@@ -130,7 +130,7 @@ const AdminSeries = () => {
                             <span className="text-sm font-medium text-foreground">S{ep.season}E{ep.episode}</span>
                             <span className="text-sm text-muted-foreground">- {ep.title}</span>
                             {ep.videoUrl ? (
-                              <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Video</span>
+                              <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 truncate max-w-[150px]">{ep.videoUrl}</span>
                             ) : (
                               <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400">No video</span>
                             )}
